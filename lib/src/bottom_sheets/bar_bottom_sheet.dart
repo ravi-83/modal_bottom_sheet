@@ -28,44 +28,48 @@ class BarBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
-      child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(height: 12),
-            SafeArea(
-              bottom: false,
-              child: control ??
-                  Container(
-                    height: 6,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6)),
-                  ),
-            ),
-            SizedBox(height: 8),
-            Flexible(
-              flex: 1,
-              fit: FlexFit.loose,
-              child: Material(
-                shape: shape ??
-                    RoundedRectangleBorder(
-                      side: BorderSide(),
-                      borderRadius: BorderRadius.only(
-                          topLeft: _default_bar_top_radius,
-                          topRight: _default_bar_top_radius),
+      child: Container(
+        color: Colors.transparent,
+        child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              SizedBox(height: 12),
+              SafeArea(
+                bottom: false,
+                child: control ??
+                    Container(
+                      height: 6,
+                      width: 40,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6)),
                     ),
-                clipBehavior: clipBehavior ?? Clip.hardEdge,
-                elevation: elevation ?? 2,
-                child: SizedBox(
-                  width: double.infinity,
-                  child: MediaQuery.removePadding(
-                      context: context, removeTop: true, child: child),
+              ),
+              SizedBox(height: 8),
+              Flexible(
+                flex: 1,
+                fit: FlexFit.loose,
+                child: Material(
+                  color: Colors.transparent,
+                  shape: shape ??
+                      RoundedRectangleBorder(
+                        side: BorderSide(color: Colors.transparent),
+                        borderRadius: BorderRadius.only(
+                            topLeft: _default_bar_top_radius,
+                            topRight: _default_bar_top_radius),
+                      ),
+                  clipBehavior: clipBehavior ?? Clip.hardEdge,
+                  elevation: elevation ?? 2,
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: MediaQuery.removePadding(
+                        context: context, removeTop: true, child: child),
+                  ),
                 ),
               ),
-            ),
-          ]),
+            ]),
+      ),
     );
   }
 }
